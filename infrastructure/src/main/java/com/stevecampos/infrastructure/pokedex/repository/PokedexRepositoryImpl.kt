@@ -1,15 +1,15 @@
-package com.stevecampos.infrastructure
+package com.stevecampos.infrastructure.pokedex.repository
 
 import com.stevecampos.core.common.ErrorEntity
-import com.stevecampos.domain.entity.Pokemon
-import com.stevecampos.domain.entity.PokemonType
-import com.stevecampos.domain.repository.PokemonRepository
+import com.stevecampos.domain.pokedex.entity.Pokemon
+import com.stevecampos.domain.pokedex.entity.PokemonType
+import com.stevecampos.domain.pokedex.repository.PokedexRepository
 import kotlin.random.Random
 import com.stevecampos.core.common.Result
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 
-class PokemonRepositoryImpl @Inject constructor() : PokemonRepository {
+class PokedexRepositoryImpl @Inject constructor() : PokedexRepository {
     override suspend fun getPokemons(): Result<List<Pokemon>> {
         delay(1500L)
         return if (Random.nextBoolean()) {

@@ -1,6 +1,6 @@
 package com.stevecampos.feature.pokedex
 
-import com.stevecampos.domain.entity.Pokemon
+import com.stevecampos.domain.pokedex.entity.Pokemon
 
 sealed class PokedexScreenState {
     object Loading : PokedexScreenState()

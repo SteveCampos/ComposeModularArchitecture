@@ -1,4 +1,4 @@
-package com.stevecampos.domain.entity
+package com.stevecampos.domain.pokedex.entity
 
 data class Pokemon(
     val number: Int,

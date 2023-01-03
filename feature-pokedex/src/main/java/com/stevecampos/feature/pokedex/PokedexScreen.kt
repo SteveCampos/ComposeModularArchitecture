@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.stevecampos.domain.entity.Pokemon
+import com.stevecampos.domain.pokedex.entity.Pokemon
 import com.stevecampos.feature.pokedex.component.PokemonCard
 
 @Composable

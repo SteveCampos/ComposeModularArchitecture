@@ -3,8 +3,8 @@ package com.stevecampos.feature.pokedex
 import androidx.lifecycle.ViewModel
 import com.stevecampos.core.common.ErrorEntity
 import com.stevecampos.core.common.executeTask
-import com.stevecampos.domain.entity.Pokemon
-import com.stevecampos.domain.usecase.GetPokemonsUseCase
+import com.stevecampos.domain.pokedex.entity.Pokemon
+import com.stevecampos.domain.pokedex.usecase.GetPokemonsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

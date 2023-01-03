@@ -1,4 +1,4 @@
-package com.stevecampos.domain.entity
+package com.stevecampos.domain.pokedex.entity
 
 sealed class PokemonType {
     object Grass: PokemonType()

@@ -4,7 +4,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.stevecampos.domain.entity.Pokemon
+import com.stevecampos.domain.pokedex.entity.Pokemon
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
