@@ -1,4 +1,4 @@
-package com.stevecampos.modulararchitecture.ui.theme
+package com.stevecampos.core.designsystem.theme
 
 import android.app.Activity
 import android.os.Build

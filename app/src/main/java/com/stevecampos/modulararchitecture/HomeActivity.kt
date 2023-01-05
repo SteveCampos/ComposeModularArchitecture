@@ -7,7 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.stevecampos.modulararchitecture.ui.theme.ModularArchitectureTheme
+import com.stevecampos.core.designsystem.theme.ModularArchitectureTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.stevecampos.modulararchitecture.ui.theme
+package com.stevecampos.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

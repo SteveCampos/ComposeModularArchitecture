@@ -16,28 +16,25 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.stevecampos.domain.pokedex.entity.PokemonType
 import com.stevecampos.feature.pokedex.R
+import com.stevecampos.feature.pokedex.entity.PokemonUi
 
 
 @Composable
 fun PokemonCard(
-    pokemonNumber: Int,
-    pokemonName: String,
-    pokemonTypes: List<PokemonType>,
-    @DrawableRes pokemonDrawableResourceId: Int,
+    pokemonUi: PokemonUi,
     modifier: Modifier = Modifier
 ) {
-    val pokemonNumberFormatted =
-        "#${pokemonNumber.toString().padStart(length = 3, padChar = '0')}"
 
     Card(
         shape = RoundedCornerShape(24.dp),
         contentColor = Color.White,
-        elevation = 2.dp,
-        modifier = modifier.clearAndSetSemantics {
-            contentDescription = "$pokemonNumberFormatted, $pokemonName, ${pokemonTypes.joinToString { it.javaClass.simpleName }}"
-        }
+        elevation = 10.dp,
+        modifier = Modifier
+            .clearAndSetSemantics {
+                contentDescription = pokemonUi.getContentDescription()
+            },
+        backgroundColor = Color(pokemonUi.backgroundColorValue)
     ) {
         Box(
             modifier = Modifier
@@ -47,9 +44,9 @@ fun PokemonCard(
                 .aspectRatio(1.4f)
         ) {
             PokeballImage(Modifier.align(Alignment.BottomEnd))
-            PokemonImage(pokemonDrawableResourceId, Modifier.align(Alignment.BottomEnd))
+            PokemonImage(pokemonUi.pokemonDrawableResourceId, Modifier.align(Alignment.BottomEnd))
             Text(
-                text = pokemonNumberFormatted,
+                text = pokemonUi.getNumberFormatted(),
                 color = Color.Black.copy(.2f),
                 modifier = Modifier
                     .padding(top = 8.dp, end = 16.dp)
@@ -62,12 +59,12 @@ fun PokemonCard(
                     .padding(start = 24.dp, top = 24.dp, bottom = 24.dp)
             ) {
                 Text(
-                    pokemonName,
+                    pokemonUi.name,
                     style = MaterialTheme.typography.body1,
                     fontWeight = FontWeight.ExtraBold
                 )
                 Spacer(modifier = Modifier.padding(4.dp))
-                pokemonTypes.map { pokemonType ->
+                pokemonUi.pokemonTypes.map { pokemonType ->
                     PowerChip(pokemonType.javaClass.simpleName)
                     Spacer(modifier = Modifier.padding(2.dp))
                 }

@@ -24,6 +24,7 @@ class PokedexViewModel @Inject constructor(
     }
 
     private fun getPokemons() {
+        _pokedexScreenState.value = PokedexScreenState.Loading
         executeTask(
             onSuccess = ::onGetPokemonsSuccess,
             onFailure = ::onGetPokemonsFailure,

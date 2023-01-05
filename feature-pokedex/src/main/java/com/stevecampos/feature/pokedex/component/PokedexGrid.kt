@@ -11,12 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.stevecampos.domain.pokedex.entity.Pokemon
-import com.stevecampos.domain.pokedex.entity.PokemonType
+import com.stevecampos.feature.pokedex.entity.translator.PokemonTranslator
 
 @Composable
 fun PokedexGrid(pokemons: List<Pokemon>, modifier: Modifier = Modifier) {
-    val pokemonNameToDrawableTranslator = remember {
-        PokemonNameToDrawableTranslator()
+    val pokemonTranslator = remember {
+        PokemonTranslator()
     }
     LazyVerticalGrid(
         columns = GridCells.Adaptive(172.dp),
@@ -36,33 +36,11 @@ fun PokedexGrid(pokemons: List<Pokemon>, modifier: Modifier = Modifier) {
             )
         }
         items(pokemons.size) { index ->
-
             val pokemon = pokemons[index]
-            return@items when (pokemon.types.first()) {
-                is PokemonType.Grass -> GrassPokemon(
-                    pokemon = pokemon,
-                    pokemonNameToDrawableTranslator = pokemonNameToDrawableTranslator,
-                )
-                is PokemonType.Fire ->
-                    FirePokemon(
-                        pokemon = pokemon,
-                        pokemonNameToDrawableTranslator = pokemonNameToDrawableTranslator,
-                    )
-                is PokemonType.Water ->
-                    WaterPokemon(
-                        pokemon = pokemon,
-                        pokemonNameToDrawableTranslator = pokemonNameToDrawableTranslator,
-                    )
-                is PokemonType.Electric ->
-                    ElectricPokemon(
-                        pokemon = pokemon,
-                        pokemonNameToDrawableTranslator = pokemonNameToDrawableTranslator,
-                    )
-                else -> GrassPokemon(
-                    pokemon = pokemon,
-                    pokemonNameToDrawableTranslator = pokemonNameToDrawableTranslator,
-                )
-            }
+            val pokemonUi = pokemonTranslator.domainToUi(pokemon)
+            PokemonCard(
+                pokemonUi = pokemonUi
+            )
         }
     }
 }

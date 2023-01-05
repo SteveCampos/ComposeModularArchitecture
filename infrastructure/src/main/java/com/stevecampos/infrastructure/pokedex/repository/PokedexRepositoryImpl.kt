@@ -12,8 +12,8 @@ import javax.inject.Inject
 class PokedexRepositoryImpl @Inject constructor() : PokedexRepository {
     override suspend fun getPokemons(): Result<List<Pokemon>> {
         delay(1500L)
-        //return if (Random.nextBoolean()) {
-        return if (true) {
+        return if (Random.nextBoolean()) {
+            //return if (true) {
             val pokemons = listOf<Pokemon>(
                 Pokemon(
                     1,
