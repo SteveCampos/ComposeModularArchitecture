@@ -12,6 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.stevecampos.domain.pokedex.entity.PokemonType
@@ -26,10 +28,16 @@ fun PokemonCard(
     @DrawableRes pokemonDrawableResourceId: Int,
     modifier: Modifier = Modifier
 ) {
+    val pokemonNumberFormatted =
+        "#${pokemonNumber.toString().padStart(length = 3, padChar = '0')}"
+
     Card(
         shape = RoundedCornerShape(24.dp),
         contentColor = Color.White,
         elevation = 2.dp,
+        modifier = modifier.clearAndSetSemantics {
+            contentDescription = "$pokemonNumberFormatted, $pokemonName, ${pokemonTypes.joinToString { it.javaClass.simpleName }}"
+        }
     ) {
         Box(
             modifier = Modifier
@@ -41,7 +49,7 @@ fun PokemonCard(
             PokeballImage(Modifier.align(Alignment.BottomEnd))
             PokemonImage(pokemonDrawableResourceId, Modifier.align(Alignment.BottomEnd))
             Text(
-                text = "#${pokemonNumber.toString().padStart(length = 3, padChar = '0')}",
+                text = pokemonNumberFormatted,
                 color = Color.Black.copy(.2f),
                 modifier = Modifier
                     .padding(top = 8.dp, end = 16.dp)
@@ -70,27 +78,17 @@ fun PokemonCard(
 
 @Composable
 fun PowerChip(text: String, modifier: Modifier = Modifier) {
-    /*Chip(
-        //modifier = modifier,
-        onClick = { /* Do something! */ },
-        /*colors = ChipDefaults.chipColors(
-            backgroundColor = Color(70, 208, 167, alpha = 0xFF),
-            contentColor = Color.White
-        ),*/
-    ) {*/
     Text(
         text,
         color = Color.White,
         style = MaterialTheme.typography.overline,
         modifier = modifier
             .background(
-                //Color(/*70, 208, 167, alpha = */0xFF46D0A7),
                 color = Color.White.copy(alpha = .15f),
                 shape = RoundedCornerShape(8.dp)
             )
             .padding(horizontal = 12.dp, vertical = 4.dp),
     )
-    //}
 }
 
 

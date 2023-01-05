@@ -1,10 +1,6 @@
 package com.stevecampos.feature.pokedex
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -13,22 +9,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.stevecampos.domain.pokedex.entity.Pokemon
 import com.stevecampos.feature.pokedex.component.PokedexGrid
-import com.stevecampos.feature.pokedex.component.PokemonCard
 
 @Composable
-fun PokedexScreen(
+fun PokedexRoute(
     pokedexViewModel: PokedexViewModel = hiltViewModel()
 ) {
     val screenState = pokedexViewModel.pokedexScreenState.collectAsState().value
+    PokedexScreen(screenState = screenState)
+}
 
-
+@Composable
+fun PokedexScreen(
+    screenState: PokedexScreenState
+) {
     when (screenState) {
-
         is PokedexScreenState.Loading -> PokedexLoading(Modifier)
         is PokedexScreenState.Error -> PokedexError(screenState.tryAgain)
         is PokedexScreenState.Success -> PokedexSuccess(screenState.pokemons)
