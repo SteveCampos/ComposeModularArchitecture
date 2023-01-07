@@ -13,7 +13,7 @@ data class PokemonUi(
     fun getNumberFormatted(): String =
         "#${number.toString().padStart(length = 3, padChar = '0')}"
 
-    private fun getTypesNames(): String = pokemonTypes.joinToString { it.javaClass.simpleName }
+    fun getTypesNames(): String = pokemonTypes.joinToString { it.javaClass.simpleName }
 
     fun getContentDescription() = "${getNumberFormatted()}, $name, ${getTypesNames()}"
 

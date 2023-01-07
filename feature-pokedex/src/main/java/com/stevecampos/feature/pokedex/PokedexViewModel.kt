@@ -6,13 +6,16 @@ import com.stevecampos.core.common.executeTask
 import com.stevecampos.domain.pokedex.entity.Pokemon
 import com.stevecampos.domain.pokedex.usecase.GetPokemonsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class PokedexViewModel @Inject constructor(
-    private val getPokemonsUseCase: GetPokemonsUseCase
+    private val getPokemonsUseCase: GetPokemonsUseCase,
+    private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
     private val _pokedexScreenState =
@@ -23,9 +26,10 @@ class PokedexViewModel @Inject constructor(
         getPokemons()
     }
 
-    private fun getPokemons() {
+    fun getPokemons() {
         _pokedexScreenState.value = PokedexScreenState.Loading
         executeTask(
+            coroutineDispatcher = coroutineDispatcher,
             onSuccess = ::onGetPokemonsSuccess,
             onFailure = ::onGetPokemonsFailure,
         ) {

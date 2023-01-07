@@ -2,17 +2,16 @@ package com.stevecampos.core.common
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 
 fun <T> ViewModel.executeTask(
+    coroutineDispatcher: CoroutineDispatcher,
     onSuccess: (T) -> Unit,
     onFailure: (ErrorEntity) -> Unit,
     task: suspend () -> Result<T>,
 ) {
-    viewModelScope.launch(Dispatchers.IO) {
+    viewModelScope.launch(coroutineDispatcher) {
         try {
             val result = task.invoke()
 
