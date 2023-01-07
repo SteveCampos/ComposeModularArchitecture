@@ -22,27 +22,23 @@ import com.stevecampos.feature.pokedex.entity.PokemonUi
 
 @Composable
 fun PokemonCard(
-    pokemonUi: PokemonUi,
-    modifier: Modifier = Modifier
+    pokemonUi: PokemonUi, modifier: Modifier = Modifier
 ) {
 
     Card(
         shape = RoundedCornerShape(24.dp),
         contentColor = Color.White,
         elevation = 10.dp,
-        modifier = Modifier
-            .clearAndSetSemantics {
+        modifier = Modifier.clearAndSetSemantics {
                 contentDescription = pokemonUi.getContentDescription()
             },
         backgroundColor = Color(pokemonUi.backgroundColorValue)
     ) {
-        Box(
-            modifier = Modifier
-                .clickable { }
-                .fillMaxWidth()
-                .then(modifier)
-                .aspectRatio(1.4f)
-        ) {
+        Box(modifier = Modifier
+            .clickable { }
+            .fillMaxWidth()
+            .then(modifier)
+            .aspectRatio(1.4f)) {
             PokeballImage(Modifier.align(Alignment.BottomEnd))
             PokemonImage(pokemonUi.pokemonDrawableResourceId, Modifier.align(Alignment.BottomEnd))
             Text(
@@ -56,7 +52,7 @@ fun PokemonCard(
             Column(
                 modifier = Modifier
                     .align(Alignment.CenterStart)
-                    .padding(start = 24.dp, top = 24.dp, bottom = 24.dp)
+                    .padding(start = 24.dp, top = 24.dp)
             ) {
                 Text(
                     pokemonUi.name,
@@ -81,8 +77,7 @@ fun PowerChip(text: String, modifier: Modifier = Modifier) {
         style = MaterialTheme.typography.overline,
         modifier = modifier
             .background(
-                color = Color.White.copy(alpha = .15f),
-                shape = RoundedCornerShape(8.dp)
+                color = Color.White.copy(alpha = .15f), shape = RoundedCornerShape(8.dp)
             )
             .padding(horizontal = 12.dp, vertical = 4.dp),
     )
