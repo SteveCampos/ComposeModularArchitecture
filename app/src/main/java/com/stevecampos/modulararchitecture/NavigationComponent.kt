@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.stevecampos.feature.pokedex.navigation.pokedexRoute
+import com.stevecampos.feature.pokedex.navigation.pokedexScreen
 
 @Composable
 fun NavigationComponent(
@@ -16,6 +16,6 @@ fun NavigationComponent(
         startDestination = "/pokedex",
         modifier = modifier
     ) {
-        pokedexRoute()
+        pokedexScreen()
     }
 }

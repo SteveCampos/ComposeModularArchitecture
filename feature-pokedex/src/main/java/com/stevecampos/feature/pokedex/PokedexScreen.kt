@@ -19,14 +19,21 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.stevecampos.domain.pokedex.entity.Pokemon
 import com.stevecampos.feature.pokedex.component.PokedexGrid
 
+/*
+*
+* PokedexScreen Stateful
+* */
 @Composable
-fun PokedexRoute(
+fun PokedexScreen(
     pokedexViewModel: PokedexViewModel = hiltViewModel()
 ) {
     val screenState = pokedexViewModel.pokedexScreenState.collectAsState().value
     PokedexScreen(screenState = screenState)
 }
 
+/*
+* PokedexScreen Stateless
+* */
 @Composable
 fun PokedexScreen(
     screenState: PokedexScreenState
@@ -91,7 +98,7 @@ fun PokedexError(tryAgain: () -> Unit, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun PokedexLoading(modifier: Modifier) {
+fun PokedexLoading(modifier: Modifier = Modifier) {
     Box(modifier = modifier
         .fillMaxSize()
         .semantics { contentDescription = "Loading Indicator" }

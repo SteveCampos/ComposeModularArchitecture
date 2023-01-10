@@ -9,12 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.stevecampos.domain.pokedex.entity.Pokemon
-import com.stevecampos.feature.pokedex.component.preview.PokemonListPreviewParamater
 import com.stevecampos.feature.pokedex.entity.translator.PokemonTranslator
 
 
@@ -55,14 +51,4 @@ fun LazyGridScope.header(
     content: @Composable LazyGridItemScope.() -> Unit
 ) {
     item(span = { GridItemSpan(this.maxLineSpan) }, content = content)
-}
-
-@Preview(showSystemUi = true, device = Devices.PIXEL_3_XL, name = "Phone")
-@Preview(showSystemUi = true, device = Devices.NEXUS_5, name = "Small Phone")
-@Preview(showSystemUi = true, device = Devices.TABLET, name = "Table")
-@Composable
-fun PreviewPokedexGrid(
-    @PreviewParameter(PokemonListPreviewParamater::class, 1) pokemons: List<Pokemon>
-) {
-    PokedexGrid(pokemons = pokemons)
 }

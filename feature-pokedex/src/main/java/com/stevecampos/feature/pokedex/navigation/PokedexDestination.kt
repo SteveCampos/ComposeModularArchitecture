@@ -2,7 +2,7 @@ package com.stevecampos.feature.pokedex.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.stevecampos.feature.pokedex.PokedexRoute
+import com.stevecampos.feature.pokedex.PokedexScreen
 
 class PokedexDestination {
     companion object {
@@ -11,8 +11,8 @@ class PokedexDestination {
 }
 
 
-fun NavGraphBuilder.pokedexRoute(){
-    composable(PokedexDestination.route){
-        PokedexRoute()
+fun NavGraphBuilder.pokedexScreen() {
+    composable(PokedexDestination.route) {
+        PokedexScreen()
     }
 }
